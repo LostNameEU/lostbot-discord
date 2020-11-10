@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * Last edit: 2020/11/9
+ * Last edit: 2020/11/10
  */
 
 package de.th3ph4nt0m.lostbotdc.utils;
@@ -35,7 +35,7 @@ public class Property
      */
     public String get(String file, String key)
     {
-        try (InputStream input = new FileInputStream("cfg/" + file + ".properties")) {
+        try (InputStream input = new FileInputStream("lostbot/discord/" + file + ".properties")) {
 
             Properties prop = new Properties();
 
@@ -53,7 +53,7 @@ public class Property
     public void setDefaults()
     {
         //create the file if not exists
-        File dir = new File("cfg");
+        File dir = new File("lostbot/discord/");
         if (!dir.exists()) {
             if (!dir.mkdirs())
                 System.out.println("ERROR: properties directory could not be generated!");
@@ -62,6 +62,7 @@ public class Property
                 Properties prop = new Properties();
 
                 prop.setProperty("bot.token", "token");
+                prop.setProperty("cfg.autoprint", "true");
                 // set the properties value
 
                 // save properties to project folder

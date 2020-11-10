@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * Last edit: 2020/11/9
+ * Last edit: 2020/11/10
  */
 
 package de.th3ph4nt0m.lostbotdc.event;
@@ -39,7 +39,7 @@ public class ReactionEvents extends ListenerAdapter
         if (!event.getUser().getId().equals(Bot.getInstance().getJda().getSelfUser().getId())) {
             //listening to every reaction in the "#rules"-channel
             if (event.getChannel().getId().equals("749566288296411167")) {
-                event.getMember().getGuild().addRoleToMember(event.getUserId(), Bot.getInstance().getJda().getRoleById("749566605826195497")).queue();
+                event.getGuild().addRoleToMember(event.getUserId(), Bot.getInstance().getJda().getRoleById("749566605826195497")).queue();
                 IMember iMember = new IMember(event.getMember(), event.getUserId());
                 if (!iMember.existsInDB())
                     iMember.createInDB();
@@ -53,10 +53,11 @@ public class ReactionEvents extends ListenerAdapter
     {
         //listener for declining rules and privacy by reaction
         if (event.getChannel().getId().equals("749566288296411167")) {
-            event.getMember().getGuild().removeRoleFromMember(event.getUserId(), Bot.getInstance().getJda().getRoleById("749566605826195497")).queue();
             IMember iMember = new IMember(event.getMember(), event.getUserId());
             if (iMember.existsInDB())
                 iMember.removeFromDB();
+
+            event.getGuild().removeRoleFromMember(event.getUserId(), Bot.getInstance().getJda().getRoleById("749566605826195497")).queue();
         }
     }
 }
