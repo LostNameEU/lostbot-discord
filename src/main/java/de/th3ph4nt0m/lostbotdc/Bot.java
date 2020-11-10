@@ -92,6 +92,6 @@ public class Bot
     private void autoSendMessages()
     {
         TextChannel rules = getJda().getTextChannelById("749566288296411167");
-        rules.sendMessage(new IEmbed("Rules").addLine("You need to accept our rules before getting full access to this server.").addLine("\n:flag_de: [German rules](https://www.lostname.eu/public/DE/dc-regeln.pdf)").addLine(":flag_us:/:flag_gb: [English rules](https://www.lostname.eu/public/EN/dc-rules.pdf)").addLine("\nAccept them by racting!").build()).queue();
+        rules.sendMessage(new IEmbed("Rules").addLine("You need to accept our rules before getting full access to this server.").addLine("\n:flag_de: [German rules](https://www.lostname.eu/public/DE/dc-regeln.pdf)").addLine(":flag_us:/:flag_gb: [English rules](https://www.lostname.eu/public/EN/dc-rules.pdf)").addLine("\nAccept them by reacting!").build()).queue();
     }
 }
